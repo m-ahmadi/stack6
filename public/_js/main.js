@@ -1,10 +1,9 @@
-import tse from './tse/tse.js';
-import datable from './datable/datable.js';
-window.log = console.log;
+import someModule from './someModule.js';
+import otherModule from './otherModule/otherModule.js';
 
-$(async function () {
+document.addEventListener('DOMContentLoaded', async function () {
 	
-	await tse.init();
-	await datable.init();
+	await someModule.init();
+	otherModule.init();
 	
 });

@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "chokidar": "^3.4.0",
+    "livereload": "^0.9.1",
     "rollup": "^2.8.0",
     "sass": "^1.26.5",
     "terser": "^4.6.13"
