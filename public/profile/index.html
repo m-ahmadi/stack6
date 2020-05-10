@@ -1,5 +1,5 @@
-<?php include('../_g.php') ?>
-<title><?php page_title(__DIR__) ?></title>
+<?php include '../_g.php' ?>
+<title><?=page_title(__DIR__)?></title>
 <link rel="stylesheet" href="_app/style.css" />
 
 <?php layout('header') ?>
@@ -12,7 +12,7 @@
 	<h2>Here are some links:</h2>
 	<ul>
 		<li><a href="../">Home again</a></li>
-		<li><a href="/stack6/public/profile/friends">My Friends</a></li>
+		<li><a href="/<?=ROOT?>/public/profile/friends">My Friends</a></li>
 	</ul>
 </div>
 
