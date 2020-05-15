@@ -117,7 +117,7 @@ function runTemp(page='', info, full=false) {
 		if ( !existsSync(entry) ) return;
 		let str = 'const _templates = {};\n';
 		getFiles(entry).forEach(file => {
-			const key = basename(file).replace(extname(file), '');
+			const key = file.replace(entry, '').replace(/\\/g, '/').replace(extname(file), '').replace(/^\//, '');
 			str += "_templates['"+key+"'] = function (c={}) { return `"+ readFileSync(file, 'utf8') + "` };\n";
 		});
 		writeFileSync(join(entry, '../_app', '_templates.js'), str);
