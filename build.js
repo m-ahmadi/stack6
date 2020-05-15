@@ -3,6 +3,7 @@ const { join, extname, dirname, basename, relative, sep } = require('path');
 const chokidar = require('chokidar');
 const sass = require('sass');
 const rollup = require('rollup');
+const rtlcss = require('rtlcss');
 const Terser = require('terser');
 
 colors();
@@ -23,6 +24,7 @@ if ( args.includes('b') ) {
 		watch(page+'/_js/**/*', runJs, pageName);
 		watch(page+'/_scss/**/*', runSass, pageName);
 		watch(page+'/_tmpl/**/*', runTemp, pageName);
+		watch(page+'/_app/style.css', runRtlcss, pageName);
 	});
 	
 	live();
@@ -95,6 +97,16 @@ function runSass(page='', info, full=false) {
 		}
 	});
 	log('Ran sass.'[err ? 'red' : 'green']);
+}
+
+function runRtlcss(page='', info, full=false) {
+	const dir = full ? './public' : join('./public', page, '_app');
+	const entries = getFiles(dir, 'style.css$');
+	
+	for (const entry of entries) {
+		writeFileSync(join(dir, 'style-rtl.css'), rtlcss.process(readFileSync(entry, 'utf8')));
+	}
+	log('Ran rtlcss.'.green);
 }
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // templates
