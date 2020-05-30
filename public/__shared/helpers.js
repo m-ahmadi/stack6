@@ -8,6 +8,7 @@ function __tmpls(name='') {
 
 function __els(root=document, obj, overwrite=false) {
 	if (typeof root === 'string') root = document.querySelector(root);
+	if (!root) return;
 	const res = {};
 	const el = root.querySelectorAll('[data-el]');
 	const els = root.querySelectorAll('[data-els]');
