@@ -1,3 +1,4 @@
+php_flag short_open_tag on
 AddType application/x-httpd-php .html .htm
 
 ErrorDocument 403 /stack6/public/__errors/handler.php
